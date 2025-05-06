@@ -30,12 +30,11 @@ def chat_input_bar() -> rx.Component:
                 rx.el.textarea(
                     name="chat_page_prompt_input",
                     placeholder="Reply to Claude...",
-                    default_value=ChatState.chat_page_input_text,
-                    on_change=ChatState.set_chat_page_input_text,
                     class_name="flex-grow bg-transparent text-neutral-200 placeholder-neutral-500 focus:outline-none resize-none p-3 leading-tight text-base",
                     rows=1,
                     auto_height=True,
                     max_height="20vh",
+                    enter_key_submit=True,
                 ),
                 rx.el.div(
                     rx.el.button(

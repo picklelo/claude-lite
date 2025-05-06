@@ -16,7 +16,7 @@ def user_message_bubble(
             ),
             rx.el.div(
                 "NR",
-                class_name="flex items-center justify-center w-8 h-8 bg-neutral-700 text-neutral-300 rounded-full text-sm font-medium ml-3 shrink-0",
+                class_name="flex items-center justify-center w-8 h-8 bg-neutral-700 text-neutral-300 rounded-full text-sm font-medium ml-4 shrink-0",
             ),
             class_name="flex items-start flex-row-reverse",
         ),

@@ -14,7 +14,9 @@ def suggestion_chip(
         rx.el.span(
             text, class_name="text-sm text-neutral-200"
         ),
-        on_click=lambda: ChatState.suggestion_clicked(text),
+        on_click=lambda: ChatState.submit_suggestion_as_prompt(
+            text
+        ),
         type="button",
         class_name="bg-[#2A2B2E] px-4 py-2 rounded-lg flex items-center hover:bg-[#3a3b3e] transition-colors",
     )

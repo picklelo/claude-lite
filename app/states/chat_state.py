@@ -23,31 +23,26 @@ API_MODEL_MAPPING = {
 
 class ChatState(rx.State):
     messages: List[Message] = []
-    initial_page_input_text: str = ""
-    chat_page_input_text: str = ""
     is_streaming: bool = False
     selected_model: str = "Claude 3 Haiku"
     error_message: str = ""
 
-    def set_initial_page_input_text(self, text: str):
-        self.initial_page_input_text = text
-
-    def set_chat_page_input_text(self, text: str):
-        self.chat_page_input_text = text
-
-    def suggestion_clicked(self, suggestion_text: str):
-        self.initial_page_input_text = (
-            f"Help me {suggestion_text.lower()}"
-        )
-
     @rx.event
     def go_back_and_clear_chat(self):
         self.messages = []
-        self.initial_page_input_text = ""
-        self.chat_page_input_text = ""
         self.is_streaming = False
         self.error_message = ""
         return rx.redirect("/")
+
+    @rx.event
+    def submit_suggestion_as_prompt(
+        self, suggestion_text: str
+    ):
+        prompt = f"Help me {suggestion_text.lower()}"
+        form_data = {"prompt_input": prompt}
+        yield ChatState.send_initial_message_and_navigate(
+            form_data
+        )
 
     @rx.event
     def send_initial_message_and_navigate(

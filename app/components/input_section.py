@@ -8,10 +8,9 @@ def input_section() -> rx.Component:
             rx.el.textarea(
                 name="prompt_input",
                 placeholder="How can I help you today?",
-                default_value=ChatState.initial_page_input_text,
-                on_change=ChatState.set_initial_page_input_text,
                 class_name="w-full bg-transparent text-neutral-300 placeholder-neutral-500 focus:outline-none resize-none text-lg p-4 min-h-[80px]",
                 rows=3,
+                enter_key_submit=True,
             ),
             rx.el.div(
                 rx.el.div(
